@@ -1,6 +1,6 @@
 import { TaskCard } from './TaskCard'
 
-export const TaskColumn = ({ title, icon, tasks, status }) => {
+export const TaskColumn = ({ title, icon, tasks, handleDelete, status }) => {
   return (
     <section className='w-[33.33%] m-5'>
       <h2 className='flex items-center'>
@@ -8,7 +8,13 @@ export const TaskColumn = ({ title, icon, tasks, status }) => {
         {title}
       </h2>
       {tasks.map((task, index) => task.status === status && (
-        <TaskCard key={index} title={task.task} tags={task.tags} />)
+        <TaskCard
+          key={index}
+          title={task.task}
+          tags={task.tags}
+          handleDelete={handleDelete}
+          index={index}
+        />)
       )}
     </section>
   )

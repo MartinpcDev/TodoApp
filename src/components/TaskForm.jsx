@@ -38,13 +38,19 @@ export const TaskForm = ({ setTasks }) => {
     setTasks(prev => {
       return [...prev, taskData]
     })
+    setTaskData({
+      task: '',
+      status: 'todo',
+      tags: []
+    })
   }
 
   return (
     <header className='flex items-center justify-center border-b-[1px] border-solid border-[#dcdcdc]'>
-      <form className='w-[40%]' onSubmit={handleSubmit}>
+      <form className='w-[40%] pb-8' onSubmit={handleSubmit}>
         <input
           className='w-full text-[20px] font-[500] bg-[#f9f9f9] text-[#000] border-[1px] border-solid border-[#dfe3e6] rounded-md p-2 mb-4 placeholder-[#686868]'
+          value={taskData.task}
           type='text'
           placeholder='Enter your task'
           name='task'
@@ -73,9 +79,10 @@ export const TaskForm = ({ setTasks }) => {
               selected={checkTag('React')}
             />
           </div>
-          <div>
+          <div className='flex text-center flex-wrap justify-center items-center gap-1'>
             <select
               className='font-[500] text-[16px] border-[1px] border-solid border-[#999] rounded-md w-[120px] h-10 py-0 px-[5px]'
+              value={taskData.status}
               name='status'
               onChange={handleChange}
             >
@@ -84,10 +91,10 @@ export const TaskForm = ({ setTasks }) => {
               <option value='done'>Done</option>
             </select>
             <button
-              className='font-[500] text-base bg-[#6457f9] text-[#fff] rounded-md h-10 py-1 px-3 ml-3 border-none cursor-pointer'
+              className='font-[500] text-base bg-[#6457f9] text-[#fff] rounded-md h-10 py-1 px-3 ml-3 border-none cursor-pointer text-center'
               type='submit'
             >
-              + Add Task
+              +Add
             </button>
           </div>
         </div>
